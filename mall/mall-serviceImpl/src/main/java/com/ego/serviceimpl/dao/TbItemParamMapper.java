@@ -2,6 +2,8 @@ package com.ego.serviceimpl.dao;
 
 import com.ego.domain.TbItemParam;
 
+import java.util.List;
+
 public interface TbItemParamMapper {
 
     int deleteByPrimaryKey(Long id);
@@ -11,6 +13,10 @@ public interface TbItemParamMapper {
     int insertSelective(TbItemParam record);
 
     TbItemParam selectByPrimaryKey(Long id);
+
+    TbItemParam selectByCId(Long CId);
+
+    List<TbItemParam> selectAll();
 
     int updateByPrimaryKeySelective(TbItemParam record);
 

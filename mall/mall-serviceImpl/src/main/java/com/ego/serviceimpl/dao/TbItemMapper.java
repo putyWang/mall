@@ -14,6 +14,8 @@ public interface TbItemMapper {
 
     List<TbItem> selectAll();
 
+    List<TbItem> selectAllByStatus(int status);
+
     TbItem selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(TbItem record);

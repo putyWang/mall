@@ -1,0 +1,13 @@
+com\ego\commons\Configuration\HttpResult.class
+com\ego\commons\ResponseData\StatusData.class
+com\ego\commons\Configuration\IdleConnectionEvictor.class
+com\ego\commons\utils\CreatIdUtil.class
+com\ego\commons\utils\HttpClientUtils.class
+com\ego\commons\Configuration\HttpClient.class
+com\ego\commons\utils\JsonUtils.class
+com\ego\commons\ResponseData\EasyUIDataGrid.class
+com\ego\commons\ResponseData\portal\PortalMenuNode.class
+com\ego\commons\ResponseData\EasyUiTree.class
+com\ego\commons\ResponseData\portal\PortalMenu.class
+com\ego\commons\utils\CookieUtils.class
+com\ego\commons\utils\FtpUtils.class

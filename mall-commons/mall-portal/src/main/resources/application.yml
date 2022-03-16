@@ -1,0 +1,40 @@
+#设置数据库连接信息
+spring:
+  application:
+    name: listService-portal
+
+#配置视图解析器
+  mvc:
+    view:
+      prefix: /jsp/
+      suffix: .jsp
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
+
+#配置注册中心
+dubbo:
+  registry:
+    address: zookeeper://192.168.1.11:2181
+
+#配置ftpclient连接信息
+ftpclient:
+  hostname: 192.168.172.131
+  port: 21
+  username: ftpuser
+  password: 85854753
+  basePath: /
+  file: /picture
+
+#配置端口号
+server:
+  port: 9090
+
+redis:
+  bigPic:
+    key: bigpic
+
+
+
+
+
+

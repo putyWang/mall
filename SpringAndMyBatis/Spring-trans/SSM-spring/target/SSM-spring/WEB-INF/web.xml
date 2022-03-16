@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <!--context-param修改ContextLoaderListener监听器对象中默认读取ApplicationContext文件的位置-->
+<!--    <context-param>-->
+<!--        &lt;!&ndash;contextConfigLocation表示配置文件的路径&ndash;&gt;-->
+<!--        <param-name>contextConfigLocation</param-name>-->
+<!--        &lt;!&ndash;自定义配置文件的路径&ndash;&gt;-->
+<!--        <param-value>classpath:ApplicationContext.xml</param-value>-->
+<!--    </context-param>-->
+<!--    <listener>-->
+<!--        &lt;!&ndash;配置监听器类&ndash;&gt;-->
+<!--        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+<!--    </listener>-->
+    <servlet>
+        <servlet-name>springMvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!--指定自定义springmvc配置文件位置-->
+            <param-value>classpath:/springmvc.xml</param-value>
+        </init-param>
+        <!--在tomcat启动后创建实例：数字越小，创建越早-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>springMvc</servlet-name>
+        <!--使用框架是，url-pattern可以使用两种方式
+            使用扩展名的方式：*.xxxx,xxxx自定义的扩展名；
+            使用斜杠“/”
+        -->
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+<!--    <filter>-->
+<!--        <filter-name>characterEncodingFilter</filter-name>-->
+<!--        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->
+<!--        <init-param>-->
+<!--            <param-name>encoding</param-name>-->
+<!--            <param-value>utf-8</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>forceRequestEncoding</param-name>-->
+<!--            <param-value>true</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>forceResponseEncoding</param-name>-->
+<!--            <param-value>true</param-value>-->
+<!--        </init-param>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>characterEncodingFilter</filter-name>-->
+<!--        <url-pattern>/*</url-pattern>-->
+<!--    </filter-mapping>-->
+
+</web-app>

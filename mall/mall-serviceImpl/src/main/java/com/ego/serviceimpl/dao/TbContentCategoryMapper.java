@@ -2,7 +2,7 @@ package com.ego.serviceimpl.dao;
 
 import com.ego.domain.TbContentCategory;
 
-
+import java.util.List;
 
 
 public interface TbContentCategoryMapper {
@@ -14,6 +14,8 @@ public interface TbContentCategoryMapper {
     int insertSelective(TbContentCategory record);
 
     TbContentCategory selectByPrimaryKey(Long id);
+
+    List<TbContentCategory> selectByPid(Long pid);
 
     int updateByPrimaryKeySelective(TbContentCategory record);
 

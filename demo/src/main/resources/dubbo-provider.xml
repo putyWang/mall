@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!--服务提供者声明名称：必须保证服务名称的唯一性-->
+    <dubbo:application name="001-link-userService-provider"/>
+
+    <!--访问服务协议的名称及端口号：默认dubbo协议，端口号：20880-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+
+    <!--暴露服务接口：dubbo：service
+        interface属性：暴露接口的全限定类名；
+        ref属性：接口引用的实现类在spring容器中的标识；
+        registry属性：如果不使用注册中心，值为：N/A；
+    -->
+    <dubbo:service interface="" ref="" register="N/A"/>
+
+    <!--将接口实现类加载到spring容器中-->
+    <bean name="" class=""/>
+
+    <!--服务消费者声明名称：必须保证服务名称的唯一性-->
+    <dubbo:application name="002-link-comsumer"/>
+
+    <!--引用远程服务接口：dubbo:reference
+        id属性：远程服务接口对象名称
+        interface：调用远程接口的全限定类名；
+        url：访问服务接口的地址；
+        registry属性：如果不使用注册中心，值为：N/A；
+    -->
+    <dubbo:reference id="userservice"
+                     interface=""
+                     url="http://localhost:20880"
+                     registry="N/A"/>
+
+    <!--声明zookeeper端口号-->
+    <dubbo:registry address="zookeeper://localhost:2181"/>
+</beans>

@@ -1,0 +1,84 @@
+#??????
+spring:
+  application:
+    name: listService-provider
+  #设置redis集群连接池信息
+  redis:
+    database: 0
+    timeout: 6000
+    cluster:
+      master: mymaster
+      nodes:
+        - 192.168.1.7:6379
+        - 192.168.1.7:6380
+        - 192.168.1.7:6381
+        - 192.168.1.7:6389
+        - 192.168.1.7:6390
+        - 192.168.1.7:6391
+      max-redirects: 6
+    lettuce:
+      pool:
+        max-active: 1000
+        max-idle: 10
+        min-idle: 5
+        max-wait: -1
+#设置数据库连接信息
+druid:
+  datasource:
+    #配置连接池信息
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.1.2:3306/eco?userUnicode=true&characterEncoding=UTF-8&ServerTimeZone=GMT%2B8
+    username: root
+    password: 85854753
+
+    #配置连接池初始化大小、最大、最小
+    initialSize: 5
+    maxActive: 10
+    minIdle: 5
+    #配置连接池等待超时时间
+    maxWait: 30000
+    #打开PSCache，并指定每个连接上PSCache的大小。oracle设为true，mysql设为false。分库分表较多推荐设置为false
+    poolPreparedStatements: false
+    maxPoolPreparedStatementPerConnectionSize: 20
+    #连接池中连接最小生存时间
+    minEvictableIdleTimeMillis: 100000
+    testOnBorrow: false
+    testOnReturn: false
+    testWhileIdle: true
+    #间隔多久进行检测，并关闭空闲连接
+    timeBetweenEvictionRunsMillis: 60000
+server:
+  port: 8081
+
+
+dubbo:
+  scan:
+    base-packages: com.ego.service
+  registry:
+    address: zookeeper://192.168.1.11:2181
+#配置分页插件
+  #dubbo.protocol.name=dubbo
+  #dubbo.protocol.port=20881
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
+
+#最大连接数
+http:
+  maxTotal: 100
+  #并发数
+  defaultMaxPerRoute: 20
+  # 创建连接的最长时间
+  connectTimeout: 1000
+  # 从链接池获取连接的最长时间
+  connectRequestTimeout: 1000
+  # 数据传输的最长时间
+  socketTimeout: 10000
+  # 提交请求前测试连接是否可用
+  staleConnectionCheckEnabled: true
+
+  addUrl: http://search.ego.com/add
+  delUrl: http://search.ego.com/delete
+

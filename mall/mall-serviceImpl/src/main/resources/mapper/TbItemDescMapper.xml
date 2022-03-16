@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ego.serviceimpl.dao.TbItemDescMapper">
+
+    <resultMap id="BaseResultMap" type="com.ego.domain.TbItemDesc">
+            <id property="itemId" column="item_id" jdbcType="BIGINT"/>
+            <result property="itemDesc" column="item_desc" jdbcType="VARCHAR"/>
+            <result property="created" column="created" jdbcType="TIMESTAMP"/>
+            <result property="updated" column="updated" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        item_id,item_desc,created,
+        updated
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from tb_item_desc
+        where  item_id = #{itemId,jdbcType=BIGINT} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from tb_item_desc
+        where  item_id = #{itemId,jdbcType=BIGINT} 
+    </delete>
+    <insert id="insert" keyColumn="item_id" keyProperty="itemId" parameterType="com.ego.domain.TbItemDesc" useGeneratedKeys="true">
+        insert into tb_item_desc
+        ( item_id,item_desc,created
+        ,updated)
+        values (#{itemId,jdbcType=BIGINT},#{itemDesc,jdbcType=VARCHAR},#{created,jdbcType=TIMESTAMP}
+        ,#{updated,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" keyColumn="item_id" keyProperty="itemId" parameterType="com.ego.domain.TbItemDesc" useGeneratedKeys="true">
+        insert into tb_item_desc
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="itemId != null">item_id,</if>
+                <if test="itemDesc != null">item_desc,</if>
+                <if test="created != null">created,</if>
+                <if test="updated != null">updated,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="itemId != null">#{itemId,jdbcType=BIGINT},</if>
+                <if test="itemDesc != null">#{itemDesc,jdbcType=VARCHAR},</if>
+                <if test="created != null">#{created,jdbcType=TIMESTAMP},</if>
+                <if test="updated != null">#{updated,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.ego.domain.TbItemDesc">
+        update tb_item_desc
+        <set>
+                <if test="itemDesc != null">
+                    item_desc = #{itemDesc,jdbcType=VARCHAR},
+                </if>
+                <if test="created != null">
+                    created = #{created,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updated != null">
+                    updated = #{updated,jdbcType=TIMESTAMP},
+                </if>
+        </set>
+        where   item_id = #{itemId,jdbcType=BIGINT} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.ego.domain.TbItemDesc">
+        update tb_item_desc
+        set 
+            item_desc =  #{itemDesc,jdbcType=VARCHAR},
+            created =  #{created,jdbcType=TIMESTAMP},
+            updated =  #{updated,jdbcType=TIMESTAMP}
+        where   item_id = #{itemId,jdbcType=BIGINT} 
+    </update>
+</mapper>

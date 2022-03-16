@@ -16,4 +16,6 @@ public interface TbUserMapper {
 
     int updateByPrimaryKey(TbUser record);
 
+    TbUser selectByUsernameAndPassword(String username, String password);
+
 }

@@ -1,0 +1,31 @@
+#设置数据库连接信息
+spring:
+  application:
+    name: listService-item
+
+#配置视图解析器
+  mvc:
+    view:
+      prefix: /jsp/
+      suffix: .jsp
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration,org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration
+
+
+
+#配置注册中心
+dubbo:
+  registry:
+    address: zookeeper://192.168.1.11:2181
+
+server:
+  port: 80
+
+redis:
+  item:
+    key: item
+  itemDesc:
+    key: itemDesc
+
+
+
