@@ -1,7 +1,0 @@
-server:
-  port: 8080
-  servlet:
-    context-path: /myboot2
-spring:
-  profiles:
-    active: dev
